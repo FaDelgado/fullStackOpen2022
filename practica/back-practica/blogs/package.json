@@ -1,0 +1,33 @@
+{
+  "name": "3.1to3.6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest --verbose",
+    "build:ui": "rm -rf build && cd ../../app-fso/part2/2.1/ && npm run build --prod && cp -r build cd ../../../back-fso/3",
+    "deploy": "git push heroku main",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
+    "logs:prod": "heroku logs --tail",
+    "lint": "eslint ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.7",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "jest": "^27.5.0",
+    "nodemon": "^2.0.15"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
