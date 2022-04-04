@@ -29,6 +29,13 @@ const App = () => {
 
   const addNote = (event) => {
     event.preventDefault();
+    if (newNote.trim() === "") {
+      setMessage({ message: "Note can't be empty", type: "error" });
+      setTimeout(() => {
+        setMessage({ ...message, message: "", type: "" });
+      }, 5000);
+      return 
+    }
     const noteObject = {
       content: newNote,
       date: new Date().toISOString(),
